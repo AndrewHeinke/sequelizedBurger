@@ -8,12 +8,12 @@ app.use(express.static(process.cwd() + '/public'));
 var exphbs = require('express-handlebars');
 
 app.use(bodyParser.urlencoded({
-	extended: false
+  extended: false
 }));
 
 app.use(methodOverride('_method'));
 app.engine('handlebars', exphbs({
-    defaultLayout: 'main'
+  defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
 
