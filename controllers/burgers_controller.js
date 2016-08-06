@@ -1,7 +1,6 @@
 var models = require('../models');
 var express = require('express');
 var router = express.Router();
-var burger = require('../models/burger.js');
 var method = require('method-override');
 var bodyParser = require('body-parser');
 
@@ -10,7 +9,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/burgers', function(req, res) {
-  models.burger.findAll()
+  models.burgers.findAll()
     .then(function(data) {
       res.render('index', {
         burgers: data
@@ -19,7 +18,7 @@ router.get('/burgers', function(req, res) {
 });
 
 router.post('/burgers/create', function(req, res) {
-  models.burger.create({
+  models.burgers.create({
       burger_name: req.body.name,
       devoured: 0
     })
@@ -30,7 +29,7 @@ router.post('/burgers/create', function(req, res) {
 
 router.put('/burgers/update/:id', function(req, res) {
   var burgerID = req.params.id;
-  models.burger.update({
+  models.burgers.update({
       devoured: true
     }, {
       where: {
